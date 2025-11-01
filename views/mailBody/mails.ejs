@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .email-wrapper {
+      background-color: #ffffff;
+      max-width: 650px;
+      margin: 40px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid #e0e0e0;
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      padding: 30px 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .email-header img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .email-header h1 {
+      font-size: 24px;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .email-body {
+      padding: 25px 30px;
+      line-height: 1.7;
+    }
+
+    .email-body h2 {
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .email-body p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .message-box {
+      background-color: #f9f9ff;
+      padding: 20px;
+      border-left: 4px solid #0072ff;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .message-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .message-box li {
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+      border-top: 1px solid #eee;
+      background-color: #fafafa;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-header">
+      <h1>SmokeFree Journey</h1>
+    </div>
+
+    <div class="email-body">
+      <h2>Hello <%= name %>,</h2>
+      <p>Thank you for reaching out. We are giving you the following personalized suggestion:</p>
+
+      <div class="message-box">
+        <%- message %>
+      </div>
+
+      <p class="signature">
+        Thanks & Regards,<br />
+        <strong>Team SmokeFree Journey</strong>
+      </p>
+    </div>
+
+    <div class="footer">
+      &copy; <%= new Date().getFullYear() %> SmokeFree Journey. All rights reserved.<br>
+      This email was sent automatically — please do not reply.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<% layout("./layouts/boilerplate") %>
+
+  <body>
+    <div class="background-div">
+      <div class="background_effect">
+        <div class="container">
+          <div class="main">
+            <h1 class="heading">WE PREDICT, AND GIVE YOU BEST ADVICE</h1>
+            <p class="para">FILL THE FORM GIVEN BELOW</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if (currUser) { %>
+      <div class="Main">
+        <div class="FormBackground">
+          <div class="FormContainer">
+            <h1 style="color: black;">Fill Up Your Form</h1>
+
+            <form id="smokingForm" method="post" action="/message">
+
+              <label for="age">Age:</label>
+              <input type="number" id="age" name="response[age]" min="10" required>
+
+              <label for="healthProblems">Do you have health problems?</label>
+              <select id="healthProblems" name="response[healthProblems]" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+
+              <label for="cigarettesPerDay">Cigarettes per Day:</label>
+              <input type="number" id="cigarettesPerDay" name="response[cigarettesPerDay]" min="0" required>
+
+              <label for="personalizedMail">Need personalized reminder mail?</label>
+              <select id="personalizedMail" name="response[personalizedMail]" required>
+                <option value="">-- Select --</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+
+              <div id="quitDateField" style="display: none;">
+                <label for="quitDate">Enter your quit date:</label>
+                <input type="date" id="quitDate" name="response[quitDate]">
+              </div>
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const mailSelect = document.getElementById('personalizedMail');
+        const quitDateField = document.getElementById('quitDateField');
+        const quitDateInput = document.getElementById('quitDate');
+
+        quitDateField.style.display = 'none';
+        quitDateInput.required = false;
+
+        mailSelect.addEventListener('change', () => {
+          if (mailSelect.value === 'Yes') {
+            quitDateField.style.display = 'block';
+            quitDateInput.required = true;
+          } else {
+            quitDateField.style.display = 'none';
+            quitDateInput.required = false;
+            quitDateInput.value = '';
+          }
+        });
+      </script>
+
+      <% } else { %>
+        <div class="not-logged-in">
+          <h2>Please <a href="/login">log in</a> to fill the form.</h2>
+        </div>
+        <% } %>
+  </body>

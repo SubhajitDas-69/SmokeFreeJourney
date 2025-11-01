@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+      <img src="img/image.png" alt="">
+      <div class="name">
+        <h2><span>SmokeFree</span>Journey</h2>
+        <p id="tagLine">-Smoking Thrills But it Also Kills</p>
+      </div>
+
+    </div>
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars navbar-toggler-icon"></i>
+    </button> -->
+    <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
+    <div class="navbar-nav">
+
+      <a class="nav-link home" href="/home">Home</a>
+      <div id="miniScreenSidebar">
+        <% if (!currUser) { %>
+          <i class="fa-solid fa-ellipsis-vertical menu-icon" id="menuToggle"></i>
+          <div id="sidebar" class="sidebar">
+            <button id="closeSidebar" class="close-btn">&times;</button>
+            <div class="navMenuDiv">
+              <a href="/signup"><button class="Sign-in-btn">Sign Up</button></a>
+              <a href="/login"><button class="Sign-in-btn">Login</button></a>
+            </div>
+
+          </div>
+          <%}%>
+      </div>
+      <div id="miniScreen2">
+        <% if (!currUser) { %>
+              <a href="/signup"><button class="Sign-in-btn">Sign Up</button></a>
+              <a href="/login"><button class="Sign-in-btn">Login</button></a>
+              <%}%>
+      </div>
+       
+
+      <% if (currUser) { %>
+
+        <i class="fa-solid fa-ellipsis-vertical menu-icon" id="menuToggle"></i>
+
+
+        <div id="sidebar" class="sidebar">
+          <button id="closeSidebar" class="close-btn">&times;</button>
+
+          <h3 class="sidebar-title">Settings</h3>
+
+          <form method="post" action="/logout" class="sidebar-form">
+            <button type="submit" class="sidebar-btn logout-btn">Logout</button>
+          </form>
+
+          <form method="post" action="/message/stopMails" class="sidebar-form">
+            <button type="submit" class="sidebar-btn stopmail-btn">Stop Daily Mails</button>
+          </form>
+        </div>
+        <% } %>
+          <script>
+            const menuToggle = document.getElementById("menuToggle");
+            const sidebar = document.getElementById("sidebar");
+            const closeSidebar = document.getElementById("closeSidebar");
+
+            menuToggle.addEventListener("click", () => {
+              sidebar.classList.add("open");
+              menuToggle.classList.add("hidden");
+            });
+
+            closeSidebar.addEventListener("click", () => {
+              sidebar.classList.remove("open");
+              menuToggle.classList.remove("hidden");
+            });
+            window.addEventListener("click", (e) => {
+              if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove("open");
+              }
+            });
+          </script>
+    </div>
+    <!-- </div> -->
+  </div>
+</nav>
