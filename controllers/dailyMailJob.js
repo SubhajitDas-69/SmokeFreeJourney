@@ -14,7 +14,7 @@ function getMotivationalMessage(day) {
   );
 }
 
-cron.schedule("33 00 * * *", async () => {
+cron.schedule("0 0 * * *", async () => {
   console.log("Running daily motivational email job...");
 
   try {
